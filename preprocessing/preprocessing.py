@@ -3,25 +3,24 @@
 # all words are in a list object
 import os
 import re
+from constants import DATA_DIR, MAIL_DIR, META_LINE_LIMIT
 
-
-directory = "/Users/Vishal/Intuit/dataset/"
-folder = "/_sent_mail"
-authors = os.listdir(directory)
+authors = os.listdir(DATA_DIR)
 authors = authors[1:]
-meta_info = 15
+print authors
 
 # for each author
 for author in authors:
 
-    current_dir = directory + author + folder
+    current_dir = DATA_DIR + author + MAIL_DIR
     emails = os.listdir(current_dir)
 
     # for all sent mails
     for email in emails:
 
         # extract meta data & convert to lower case
-        txt = open(current_dir + "/" + "15.")
+        txt = open(current_dir + "/" + email)
+        # print txt.read()
         meta_data = dict()
         message = list()
         line_no = 0
@@ -30,9 +29,10 @@ for author in authors:
 
             line_no += 1
             # process meta data
-            if line_no <= meta_info:
+            if line_no <= META_LINE_LIMIT:
                 content = line.rstrip().split(":")
-                meta_data[content[0]] = content[1]
+                if len(content) >= 2:
+                    meta_data[content[0]] = content[1]
             # process message data
             else:
                 words = line.rstrip().lower().split(" ")
@@ -50,5 +50,4 @@ for author in authors:
         message = filter(None, message)
         print meta_data
         print message
-        break
     break
