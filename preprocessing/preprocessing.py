@@ -1,19 +1,26 @@
-# strip all whitespace, special characeters and replace numbers by 0
+# strip all whitespace, special characters and replace numbers by 0
 # convert meta data into a dictionary object
 # all words are in a list object
 import os
 import re
 from constants import DATA_DIR, MAIL_DIR, META_LINE_LIMIT
 
-authors = os.listdir(DATA_DIR)
-authors = authors[1:]
-print authors
+def preprocess(author):
+    # authors = os.listdir(DATA_DIR)
+    # authors = authors[1:]
 
-# for each author
-for author in authors:
+    # # temporary script to create all author folders 
+    # for author in authors:
+    #     os.makedirs(BASE_DIR + "features/" + author)
+
+    # for each author
+    # for author in authors:
 
     current_dir = DATA_DIR + author + MAIL_DIR
     emails = os.listdir(current_dir)
+
+    meta = dict()
+    words_used = dict()
 
     # for all sent mails
     for email in emails:
@@ -26,7 +33,6 @@ for author in authors:
         line_no = 0
 
         for line in txt:
-
             line_no += 1
             # process meta data
             if line_no <= META_LINE_LIMIT:
@@ -48,6 +54,9 @@ for author in authors:
                 message += words
 
         message = filter(None, message)
-        print meta_data
-        print message
-    break
+
+        meta[email] = meta_data
+        words_used[email] = message
+        # print meta_data
+        # print message
+    return meta, words_used
