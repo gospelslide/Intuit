@@ -22,6 +22,7 @@ def preprocess(author):
     words_used = dict()
 
     # for all sent mails
+    # divide into test & train set
     for email in emails:
 
         # extract meta data & convert to lower case
