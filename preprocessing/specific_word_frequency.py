@@ -3,8 +3,6 @@ import sys
 import cPickle as pickle
 
 from constants import DATA_DIR, MAIL_DIR, META_LINE_LIMIT, BASE_DIR
-sys.path.insert(0, BASE_DIR + "dictionary")
-from check_valid_word import has_key
 from preprocessing import preprocess
 
 words = ['and', 'but', 'however', 'if', 'that', 'more', 'must', 'might', 'this', 'very']
