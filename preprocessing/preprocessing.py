@@ -5,13 +5,17 @@ import os
 import re
 from constants import DATA_DIR, MAIL_DIR, META_LINE_LIMIT, BASE_DIR
 
+# temporary script to create all author folders 
+# authors = os.listdir(DATA_DIR)
+# authors = authors[1:]
+# for author in authors:
+#     print author
+#     os.makedirs(BASE_DIR + "features/" + author)
+
+
 def preprocess(author):
     authors = os.listdir(DATA_DIR)
     authors = authors[1:]
-
-    # temporary script to create all author folders 
-    # for author in authors:
-    #     os.makedirs(BASE_DIR + "features/" + author)
 
     current_dir = DATA_DIR + author + MAIL_DIR
     if not os.path.exists(current_dir):

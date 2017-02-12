@@ -18,14 +18,16 @@ for author in authors:
 	content = email_info[1]
 	occurences = dict()
 
+	print author
+
 	for key in content:
 		for word in content[key]:
 			if word in occurences:
 				occurences[word] += 1
 			else:
 				if has_key(word):
-					total_words += 1
 					occurences[word] = 1
+			total_words += 1
 
 	for word in occurences:
 		occurences[word] /= float(total_words)
