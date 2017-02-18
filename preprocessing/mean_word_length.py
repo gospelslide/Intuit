@@ -31,7 +31,7 @@ for author in authors:
 	for word in occurences:
 		occurences[word] /= float(total_words)
 
-	fow_storage = BASE_DIR + "features/" + author + "/features.p"
+	fow_storage = BASE_DIR + "features\\" + author + "\\features.p"
 	read = open(fow_storage)
 	occ = pickle.load(read)
 	occ['mean_word_length'] = avg_word_length

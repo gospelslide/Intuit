@@ -32,9 +32,9 @@ for author in authors:
 	for word in occurences:
 		occurences[word] /= float(total_words)
 
-	fow_storage = BASE_DIR + "features/" + author + "/fow.p"
+	fow_storage = BASE_DIR + "features\\" + author + "\\fow.p"
 	if not os.path.exists(fow_storage):
 		store = open(fow_storage, "a")
 		pickle.dump(occurences, store)
-	# read = open(BASE_DIR + "features/" + author + "/fow.p", "r")
+	# read = open(BASE_DIR + "features\\" + author + "\\fow.p", "r")
 	# occ = pickle.load(read)

@@ -28,7 +28,7 @@ for author in authors:
 	deno = len(email_contents) - no_content
 	avg_ratio = total/deno
 
-	fow_storage = BASE_DIR + "features/" + author + "/features.p"
+	fow_storage = BASE_DIR + "features\\" + author + "\\features.p"
 	read = open(fow_storage)
 	occ = pickle.load(read)
 	occ['type_token_ratio'] = avg_ratio

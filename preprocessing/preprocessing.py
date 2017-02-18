@@ -30,7 +30,7 @@ def preprocess(author):
     for email in emails:
 
         # extract meta data & convert to lower case
-        txt = open(current_dir + "/" + email)
+        txt = open(current_dir + "\\" + email)
         # print txt.read()
         meta_data = dict()
         message = list()

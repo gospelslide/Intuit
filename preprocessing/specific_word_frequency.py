@@ -38,7 +38,7 @@ for author in authors:
 	# print author
 	# print occurences
 
-	fow_storage = BASE_DIR + "features/" + author + "/features.p"
+	fow_storage = BASE_DIR + "features\\" + author + "\\features.p"
 	if not os.path.exists(fow_storage):
 		store = open(fow_storage, "a")
 		pickle.dump(occurences, store)
