@@ -67,3 +67,27 @@ def preprocess(author):
     # a tuple of two dictionaries both contain email no as the key and 
     # meta contains metadata as value and words_used contains all words in 
     # the email in a list as the value
+
+
+def preprocess_special(author):
+    authors = os.listdir(DATA_DIR)
+    authors = authors[1:]
+
+    current_dir = DATA_DIR + author + MAIL_DIR
+    if not os.path.exists(current_dir):
+        return
+    emails = os.listdir(current_dir)
+
+    word_count = 0
+    email_content = ""
+    for email in emails:
+        txt = open(current_dir + "/" + email)
+        message = list()
+        line_no = 0
+        for line in txt:
+            line_no += 1
+            if line_no > META_LINE_LIMIT+1:
+                words = line.rstrip().lower().split(" ")
+                word_count += len(words)
+                email_content += line
+    return email_content,word_count
